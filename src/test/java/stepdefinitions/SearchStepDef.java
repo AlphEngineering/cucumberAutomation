@@ -2,6 +2,10 @@ package stepdefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,28 +20,34 @@ import static utils.ReadData.*;
 public class SearchStepDef {
     WebDriver driver = null;
     HomePage homePage;
-    Scanner scan = null;
+    String search_engine;
+    Scanner scan = new Scanner(System.in);
 
     @Before
     public void start_up(){
         driver = BrowserFactory.launchBrowser("browser");
+        driver.get(search_engine = propertyConfig.getProperty("search_engine"));
         homePage = new HomePage(driver);
         GenericMethods.pauseExecutionFor(5);
     }
-    @Given("{string} is loaded")
-    public void search_engine_is_loaded(String search_engine){
-        driver.get(search_engine = propertyConfig.getProperty("search_engine"));
+    @Given("search engine is loaded")
+    public void search_engine_is_loaded(){
         Assert.assertTrue(homePage.displayGoogleHeader());
         System.out.println(homePage.getCurrentUrl());
     }
-    @When("{string} is entered")
+    @When("a {string} is entered using properties")
     public void query_is_entered_using_property(String query){
         homePage.enterSearch();
-        scan.next(query = propertyQuery.getProperty("query"));
+        String qy = query;
+        qy = scan.next(propertyQuery.getProperty("query"));
     }
-    @When("{string} is entered")
+
+    @When("a {string} is entered using examples")
     public void query_is_entered_using_examples(String query){
-        System.out.println(query);
+        String q = query;
+        System.out.println(q);
+        homePage.enterSearch();
+        q = scan.nextLine();
 
         String A = "Is 2024 El Nino or La Nina?";
         String B ="How many hurricanes have crossed the Atlantic ocean in 2024";
@@ -45,7 +55,7 @@ public class SearchStepDef {
     }
     @Then("site returns results")
     public void site_returns_results(){
-        System.out.println(driver.getPageSource());
+        System.out.println(driver.getTitle());
     }
 
     //@After

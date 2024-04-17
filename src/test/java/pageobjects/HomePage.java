@@ -16,6 +16,7 @@ public class HomePage {
     WebElement googleHeader;
     @FindBy(xpath = "//textarea[@title='Search']")
     WebElement searchInput;
+
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
     }
