@@ -19,7 +19,7 @@ public class SearchStepDef {
     Scanner scan = null;
 
     @Before
-    public void setup(){
+    public void start_up(){
         driver = BrowserFactory.launchBrowser("browser");
         homePage = new HomePage(driver);
         GenericMethods.pauseExecutionFor(5);
@@ -31,12 +31,12 @@ public class SearchStepDef {
         System.out.println(homePage.getCurrentUrl());
     }
     @When("{string} is entered")
-    public void query_is_entered_property(String query){
+    public void query_is_entered_using_property(String query){
         homePage.enterSearch();
         scan.next(query = propertyQuery.getProperty("query"));
     }
     @When("{string} is entered")
-    public void query_is_entered_examples(String query){
+    public void query_is_entered_using_examples(String query){
         System.out.println(query);
 
         String A = "Is 2024 El Nino or La Nina?";
@@ -45,10 +45,11 @@ public class SearchStepDef {
     }
     @Then("site returns results")
     public void site_returns_results(){
+        System.out.println(driver.getPageSource());
     }
 
     //@After
-    public void quit(){
+    public void shut_down(){
         driver.close();
     }
 
