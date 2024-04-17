@@ -7,9 +7,10 @@ import io.cucumber.testng.CucumberOptions;
         //path of feature file
         features = "src/test/features",
         //path of step definition file
-        glue = "stepdefinitions",
+        glue = {"stepdefinitions"},
         //path of reports
-        plugin = {"pretty", "html:resources/reports"}
+        plugin = { "pretty", "html:resources/reports" },
+        monochrome = true
         )
 public class TestRunner extends AbstractTestNGCucumberTests {
 
