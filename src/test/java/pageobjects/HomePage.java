@@ -45,6 +45,7 @@ public class HomePage {
         //searchInput.sendKeys(queries());
         searchInput.sendKeys(Keys.ENTER);
     }
+
     public void scannerInput(){
         Scanner scan = new Scanner(System.in);
         System.out.print("Query: ");
