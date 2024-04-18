@@ -56,6 +56,13 @@ public class SearchStepDef {
         //homePage.queries(); //Sends queries from method on HomPage
     }
 
+    //    @When("{string} is entered using manual input")
+//    public void query_is_entered_using_manual_input(String Query) {
+//        System.out.println("Query using Manual Input");
+//        homePage.enterSearch();
+//        homePage.scannerInput(); //Console is view only.  Unable to input via Scanner
+//    }
+
     @Then("Site returns results")
     public void site_returns_results(){
         System.out.println(driver.getTitle());
