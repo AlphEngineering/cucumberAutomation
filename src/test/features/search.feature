@@ -13,9 +13,3 @@ Feature: Search Engine Functionality
     | Query |
     | Is 2024 El Nino or La Nina? |
     | How many hurricanes have crossed the Atlantic ocean in 2024? |
-
-#  Scenario: Query search engine using Manual Input
-#    Given Search engine is loaded
-#    When 'Query' is entered using manual input
-#    Then Site returns results
-
