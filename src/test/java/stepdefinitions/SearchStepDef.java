@@ -63,11 +63,6 @@ public class SearchStepDef {
         System.out.println("Query using Manual Input");
         homePage.enterSearch();
         homePage.scannerInput(); //Console is view only.  Unable to input via Scanner
-//        System.out.print("Query: ");
-//        String mi = scan.nextLine();
-//        System.out.println(mi);
-//        scan.close();
-
     }
     @Then("Site returns results")
     public void site_returns_results(){
